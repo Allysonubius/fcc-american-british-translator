@@ -1,5 +1,5 @@
 {
-  "name": "american-british-english-translator",
+  "name": "fcc-american-british-translator",
   "version": "2.0.0",
   "description": "Quality Assurance 5: American / British English Translator",
   "main": "server.js",
