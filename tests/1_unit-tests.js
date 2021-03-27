@@ -32,7 +32,7 @@ suite('Unit Tests', () => {
 
   suite('British to American tests', () => {
     const testPairs = {
-      'We watched the footie match for a while.': 'Tea time is usually around 4 or <span class="highlight">4:30</span>',
+      'We watched the footie match for a while.': 'We watched the <span class="highlight">soccer</span> match for a while.>',
       'Paracetamol takes up to an hour to work.': '<span class="highlight">Tylenol</span> takes up to an hour to work.',
       'First, caramelise the onions.': 'First, <span class="highlight">caramelize</span> the onions.',
       'I spent the bank holiday at the funfair.': 'I spent the <span class="highlight">public holiday</span> at the <span class="highlight">carnival</span>.',
@@ -53,5 +53,43 @@ suite('Unit Tests', () => {
         done();
       });
     }
+  });
+
+  suite('Highlight tests', () => {
+    test('Mangoes are my favorite fruit.', (done) => {
+      const sentence = 'Mangoes are my favorite fruit.';
+      const expected = 'Mangoes are my <span class="highlight">favourite</span> fruit.';
+
+      const translation = translator.americanToBritish(sentence);
+      assert.equal(translation, expected);
+      done();
+    });
+
+    test('I ate yogurt for breakfast.', (done) => {
+      const sentence = 'I ate yogurt for';
+      const expected = 'I ate <span class="highlight">yoghurt</span> for breakfast.';
+
+      const translation = translator.americanToBritish(sentence);
+      assert.equal(translation, expected);
+      done();
+    });
+
+    test('We watched the footie match for a while.', (done) => {
+      const sentence = 'We watched the footie match for a while.';
+      const expected = 'We watched the <span class="highlight">soccer</span> match for a while.';
+
+      const translation = translator.britishToAmerican(sentence);
+      assert.equal(translation, expected);
+      done();
+    });
+
+    test('Paracetamol takes up to an hour to work.', (done) => {
+      const sentence = 'Paracetamol takes up to an hour to work.';
+      const expected = '<span class="highlight">Tylenol</span> takes up to an hour to work.';
+
+      const translation = translator.britishToAmerican(sentence);
+      assert.equal(translation, expected);
+      done();
+    });
   });
 });
