@@ -11,7 +11,7 @@
 export function reverseObject(obj) {
   let newObj = {};
 
-  for (prop in obj) {
+  for (let prop in obj) {
     let value = obj[prop];
 
     newObj[value] = prop;
@@ -22,7 +22,7 @@ export function reverseObject(obj) {
 
 export function replaceTimeSeparator(sentence, sep, newSep, highlight = (word) => word) {
   let newSentence = sentence.slice();
-  const regex = new RegExp("\\d\\d" + sep + "\\d\\d", 'g');
+  const regex = new RegExp("\\d+" + sep + "\\d+", 'g');
 
   const matches = sentence.match(regex);
 
