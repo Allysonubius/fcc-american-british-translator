@@ -1,3 +1,5 @@
+const utils = require('./utils');
+
 const americanOnly = require("./american-only.js");
 const americanToBritishSpelling = require("./american-to-british-spelling.js");
 const americanToBritishTitles = require("./american-to-british-titles.js");
@@ -38,20 +40,8 @@ function highlightCapitalize(word) {
   return '<span class="highlight">' + capitalized + "</span>";
 }
 
-function americanToBritishTime(sentence, highlight = (word) => word) {
-  let newSentence = sentence.slice();
-  const regex = /\d\d\:\d\d/g;
-
-  const matches = sentence.match(regex);
-
-  if (matches) {
-    matches.forEach((match) => {
-    const replacedMatch = match.replace(':', '.');
-    newSentence = newSentence.replace(match, highlight(replacedMatch));
-  });
-  }
-
-  return newSentence;
+function americanToBritishTime(sentence, highlight) {
+  return utils.replaceTimeSeparator(sentence, ':', '.', highlight); 
 }
 
 class Translator {
