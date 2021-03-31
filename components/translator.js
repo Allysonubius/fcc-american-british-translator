@@ -5,6 +5,10 @@ const americanToBritishSpelling = require("./american-to-british-spelling.js");
 const americanToBritishTitles = require("./american-to-british-titles.js");
 const britishOnly = require("./british-only.js");
 
+// const reversedAmericanOnly = utils.reverseObject(americanOnly);
+const revAmeToBritSpelling = utils.reverseObject(americanToBritishSpelling);
+const revAmeToBritTitles = utils.reverseObject(americanToBritishTitles);
+
 function smartReplace(
   sentence,
   dictionary,
@@ -53,6 +57,10 @@ function americanToBritishTime(sentence, highlight) {
   return utils.replaceTimeSeparator(sentence, ":", ".", highlight);
 }
 
+function britishToAmericanTime(sentence, highlight) {
+  return utils.replaceTimeSeparator(sentence, '.', ':', highlight);
+}
+
 class Translator {
   americanToBritish(sentence) {
     let newSentence = sentence.slice();
@@ -74,7 +82,25 @@ class Translator {
     return newSentence;
   }
 
-  britishToAmerican(sentence) {}
+  britishToAmerican(sentence) {
+    let newSentence = sentence.slice();
+
+    newSentence = smartReplace(newSentence, britishOnly, highlight);
+    newSentence = smartReplace(
+      newSentence,
+      revAmeToBritSpelling,
+      highlight
+    );
+    newSentence = smartReplace(
+      newSentence,
+      revAmeToBritTitles,
+      highlightCapitalize,
+      false
+    );
+    newSentence = britishToAmericanTime(newSentence, highlight);
+
+    return newSentence;
+  }
 }
 
 module.exports = Translator;
