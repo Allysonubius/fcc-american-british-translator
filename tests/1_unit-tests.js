@@ -66,7 +66,7 @@ suite('Unit Tests', () => {
     });
 
     test('I ate yogurt for breakfast.', (done) => {
-      const sentence = 'I ate yogurt for';
+      const sentence = 'I ate yogurt for breakfast.';
       const expected = 'I ate <span class="highlight">yoghurt</span> for breakfast.';
 
       const translation = translator.americanToBritish(sentence);
