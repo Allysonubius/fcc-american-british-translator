@@ -32,7 +32,7 @@ suite('Unit Tests', () => {
 
   suite('British to American tests', () => {
     const testPairs = {
-      'We watched the footie match for a while.': 'We watched the <span class="highlight">soccer</span> match for a while.>',
+      'We watched the footie match for a while.': 'We watched the <span class="highlight">soccer</span> match for a while.',
       'Paracetamol takes up to an hour to work.': '<span class="highlight">Tylenol</span> takes up to an hour to work.',
       'First, caramelise the onions.': 'First, <span class="highlight">caramelize</span> the onions.',
       'I spent the bank holiday at the funfair.': 'I spent the <span class="highlight">public holiday</span> at the <span class="highlight">carnival</span>.',
