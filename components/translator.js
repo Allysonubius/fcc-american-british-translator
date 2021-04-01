@@ -35,7 +35,6 @@ function smartReplace(
 
   // Replace
   phrases.forEach((phrase) => {
-    // console.log(`\n[${phrase}]: [${dictionary[phrase]}]`);
     let regexp = new RegExp(phrase, "gi");
     if (dictionary[phrase])
       newSentence = newSentence.replace(regexp, highlight(dictionary[phrase]));
