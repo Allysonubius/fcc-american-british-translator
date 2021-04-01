@@ -11,7 +11,7 @@ const endpoint = '/api/translate';
 suite('Functional Tests', () => {
   test('Translation with text and locale fields', (done) => {
     const text = "Mangoes are my favorite fruit.";
-    const expected = 'Mangoes are my <span class="highlight">favourite</span> food.';
+    const expected = 'Mangoes are my <span class="highlight">favourite</span> fruit.';
 
     chai.request(server)
       .post(endpoint)
